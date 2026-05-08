@@ -281,3 +281,21 @@ A coleção Postman está em: `postman/Raizes_do_Nordeste_API.postman_collection
 - **Docs:** Swagger/OpenAPI 3.0 (swagger-jsdoc + swagger-ui-express)
 - **Segurança:** Helmet, CORS, Rate Limiting
 - **Container:** Docker + Docker Compose
+
+---
+
+## Deploy (Render.com)
+
+A API está publicada online em:
+
+🌐 **https://raizes-do-nordeste-api.onrender.com**
+
+📖 **Swagger Online:** https://raizes-do-nordeste-api.onrender.com/docs
+
+> Nota: O plano gratuito do Render hiberna após 15min sem uso. A primeira requisição pode demorar ~30s para "acordar".
+
+---
+
+## Repositório
+
+🔗 https://github.com/MatheusGomes01/raizes-do-nordeste
