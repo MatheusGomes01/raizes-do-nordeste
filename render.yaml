@@ -2,7 +2,7 @@ databases:
   - name: raizes-db
     plan: free
     databaseName: raizes_nordeste
-    user: postgres
+    user: raizes_user
 
 services:
   - type: web
