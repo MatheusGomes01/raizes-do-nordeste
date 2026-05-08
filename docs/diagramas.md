@@ -373,67 +373,67 @@ sequenceDiagram
 
 ```mermaid
 graph TB
-    subgraph "Clientes"
-        APP[📱 App Mobile]
-        WEB[🌐 Web Browser]
-        TOTEM[🖥️ Totem]
+    subgraph Clientes
+        APP["App Mobile"]
+        WEB["Web Browser"]
+        TOTEM["Totem"]
     end
 
-    subgraph "API Layer (Controllers/Routes)"
-        AUTH[/auth]
-        USR[/usuarios]
-        UNI[/unidades]
-        PROD[/produtos]
-        EST[/estoque]
-        PED[/pedidos]
-        PGTO[/pagamentos]
-        FID[/fidelidade]
+    subgraph API_Layer["API Layer - Controllers e Routes"]
+        R_AUTH["auth"]
+        R_USR["usuarios"]
+        R_UNI["unidades"]
+        R_PROD["produtos"]
+        R_EST["estoque"]
+        R_PED["pedidos"]
+        R_PGTO["pagamentos"]
+        R_FID["fidelidade"]
     end
 
-    subgraph "Middlewares"
-        JWT[Auth JWT]
-        ROLE[Autorização Roles]
-        AUDIT[Auditoria]
-        ERR[Error Handler]
+    subgraph Middlewares
+        JWT["Auth JWT"]
+        ROLE["Autorizacao Roles"]
+        AUDIT["Auditoria"]
+        ERR["Error Handler"]
     end
 
-    subgraph "Application Layer (Services)"
-        AS[AuthService]
-        PS[PedidoService]
-        PGS[PagamentoService]
-        ES[EstoqueService]
-        FS[FidelidadeService]
-        PRS[ProdutoService]
+    subgraph Application_Layer["Application Layer - Services"]
+        AS["AuthService"]
+        PS["PedidoService"]
+        PGS["PagamentoService"]
+        ES["EstoqueService"]
+        FS["FidelidadeService"]
+        PRS["ProdutoService"]
     end
 
-    subgraph "Domain Layer (Enums/Regras)"
-        CP[CanalPedido]
-        SP[StatusPedido]
-        RL[Roles]
-        FP[FormaPagamento]
+    subgraph Domain_Layer["Domain Layer - Enums e Regras"]
+        CP["CanalPedido"]
+        SP["StatusPedido"]
+        RL["Roles"]
+        FP["FormaPagamento"]
     end
 
-    subgraph "Infrastructure Layer"
-        ORM[Sequelize ORM]
-        MOCK[Gateway Mock]
-        DB[(PostgreSQL)]
+    subgraph Infrastructure_Layer["Infrastructure Layer"]
+        ORM["Sequelize ORM"]
+        MOCK["Gateway Mock"]
+        DB[("PostgreSQL")]
     end
 
-    APP --> AUTH
-    WEB --> AUTH
-    TOTEM --> PED
+    APP --> R_AUTH
+    WEB --> R_AUTH
+    TOTEM --> R_PED
 
-    AUTH --> JWT
-    PED --> JWT
+    R_AUTH --> JWT
+    R_PED --> JWT
     JWT --> ROLE
     ROLE --> AUDIT
 
-    AUTH --> AS
-    PED --> PS
-    PGTO --> PGS
-    EST --> ES
-    FID --> FS
-    PROD --> PRS
+    R_AUTH --> AS
+    R_PED --> PS
+    R_PGTO --> PGS
+    R_EST --> ES
+    R_FID --> FS
+    R_PROD --> PRS
 
     PS --> CP
     PS --> SP
