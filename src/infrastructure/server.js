@@ -53,6 +53,7 @@ app.use('/pedidos', require('../api/routes/pedidoRoutes'));
 app.use('/pagamentos', require('../api/routes/pagamentoRoutes'));
 app.use('/fidelidade', require('../api/routes/fidelidadeRoutes'));
 app.use('/promocoes', require('../api/routes/promocaoRoutes'));
+app.use('/auditoria', require('../api/routes/auditRoutes'));
 
 // === HEALTH CHECK ===
 app.get('/health', (req, res) => {
