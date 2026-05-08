@@ -8,6 +8,7 @@ API RESTful para a rede de lanchonetes **Raízes do Nordeste**, desenvolvida com
 - [Como Executar](#como-executar)
 - [Variáveis de Ambiente](#variáveis-de-ambiente)
 - [Documentação da API (Swagger)](#documentação-da-api-swagger)
+- [Diagramas](#diagramas)
 - [Arquitetura](#arquitetura)
 - [Endpoints Principais](#endpoints-principais)
 - [Usuários de Teste](#usuários-de-teste)
@@ -95,6 +96,21 @@ Após iniciar a API, acesse:
 A documentação Swagger contém todos os endpoints, schemas, exemplos de request/response e códigos de status.
 
 JSON do Swagger: http://localhost:3000/docs.json
+
+---
+
+## Diagramas
+
+Todos os diagramas estão documentados em: **[docs/diagramas.md](docs/diagramas.md)**
+
+Inclui:
+1. **Diagrama de Casos de Uso** — Atores e funcionalidades
+2. **DER (Entidade-Relacionamento)** — Tabelas, PKs, FKs e cardinalidades
+3. **Diagrama de Classes** — Domínio com métodos e relacionamentos
+4. **Diagrama de Sequência** — Fluxo crítico (Pedido → Pagamento → Status)
+5. **Diagrama de Arquitetura** — Camadas e separação de responsabilidades
+
+> Os diagramas usam Mermaid e são renderizados automaticamente pelo GitHub.
 
 ---
 
