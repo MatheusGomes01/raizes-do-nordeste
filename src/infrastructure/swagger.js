@@ -37,7 +37,7 @@ Envie o token no header: \`Authorization: Bearer <token>\`
       }
     },
     servers: [
-      { url: 'http://localhost:3000', description: 'Servidor local (Docker)' }
+      { url: process.env.RENDER_EXTERNAL_URL || 'http://localhost:3000', description: process.env.RENDER_EXTERNAL_URL ? 'Servidor Render (Produção)' : 'Servidor local (Docker)' }
     ],
     components: {
       securitySchemes: {

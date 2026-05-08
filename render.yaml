@@ -1,0 +1,46 @@
+databases:
+  - name: raizes-db
+    plan: free
+    databaseName: raizes_nordeste
+    user: postgres
+
+services:
+  - type: web
+    name: raizes-do-nordeste-api
+    plan: free
+    runtime: node
+    buildCommand: npm install
+    startCommand: node src/infrastructure/database/migrate.js && node src/infrastructure/database/seed.js && node src/infrastructure/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 1d
+      - key: DB_HOST
+        fromDatabase:
+          name: raizes-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: raizes-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: raizes-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: raizes-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: raizes-db
+          property: password
+      - key: PONTOS_POR_REAL
+        value: 1
+      - key: VALOR_POR_PONTO
+        value: 0.10

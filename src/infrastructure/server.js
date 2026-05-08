@@ -85,7 +85,7 @@ async function startServer() {
     await sequelize.authenticate();
     console.log('[DB] Conexão com PostgreSQL estabelecida.');
 
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`[SERVER] API rodando na porta ${PORT}`);
       console.log(`[SWAGGER] Documentação disponível em http://localhost:${PORT}/docs`);
       console.log(`[HEALTH] Health check em http://localhost:${PORT}/health`);
