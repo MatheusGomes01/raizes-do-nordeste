@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: raizes-postgres
+    environment:
+      POSTGRES_DB: raizes_nordeste
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: raizes-api
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./src:/app/src
+    command: >
+      sh -c "
+        echo 'Aguardando banco de dados...' &&
+        sleep 3 &&
+        node src/infrastructure/database/migrate.js &&
+        node src/infrastructure/database/seed.js &&
+        npm run dev
+      "
+
+volumes:
+  postgres_data:
